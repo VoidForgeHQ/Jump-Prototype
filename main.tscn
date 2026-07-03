@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://t032lxws7q0p"]
+
+[ext_resource type="Script" uid="uid://keyygvg3i0ws" path="res://player.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://ddw2cebkqeyrx" path="res://main.gd" id="1_lquwl"]
+[ext_resource type="PackedScene" uid="uid://u8rq0o7perlm" path="res://obstacle.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://dn6lwgc1jy7ac" path="res://spawner.gd" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://dcvnnoph18ylt" path="res://label.gd" id="5_7mycd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp5od"]
+size = Vector2(22, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k56px"]
+size = Vector2(1096.5, 86.25)
+
+[node name="Main" type="Node2D" unique_id=772956067]
+script = ExtResource("1_lquwl")
+
+[node name="player" type="CharacterBody2D" parent="." unique_id=823117608 groups=["player"]]
+position = Vector2(16, -11)
+script = ExtResource("1_ig7tw")
+
+[node name="Sprite2D" type="Sprite2D" parent="player" unique_id=452789448]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=2084950558]
+shape = SubResource("RectangleShape2D_wp5od")
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=1692726784]
+position = Vector2(3, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1470212584]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer" unique_id=1962182575]
+offset_right = 77.0
+offset_bottom = 41.0
+text = "Score: 0"
+script = ExtResource("5_7mycd")
+
+[node name="ObstacleSpawner" type="Node2D" parent="." unique_id=137233144]
+position = Vector2(800, -12)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=555352608]
+position = Vector2(-12, 23)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=519167885]
+position = Vector2(524, 20)
+shape = SubResource("RectangleShape2D_k56px")
+debug_color = Color(0.97009283, 0, 0.46019125, 0.41960785)
+
+[node name="Spawner" type="Node2D" parent="." unique_id=791484408]
+script = ExtResource("3_1bvp3")
+obstacle_scene = ExtResource("2_h2yge")
+
+[node name="Timer" type="Timer" parent="Spawner" unique_id=1663906002]
+wait_time = 2.5
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
