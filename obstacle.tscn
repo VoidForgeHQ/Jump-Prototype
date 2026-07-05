@@ -1,21 +1,22 @@
 [gd_scene format=3 uid="uid://u8rq0o7perlm"]
 
 [ext_resource type="Script" uid="uid://s6oldjhpvqq0" path="res://obstacle.gd" id="1_aubd6"]
-[ext_resource type="Texture2D" uid="uid://b6ijlkayqleyl" path="res://icon.svg" id="2_vcivv"]
+[ext_resource type="Texture2D" uid="uid://crikp58bwm30x" path="res://assets/obstacles/spike.png" id="2_aubd6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkdpk"]
-size = Vector2(34, 28)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
 
 [node name="Obstacle" type="Area2D" unique_id=297249469]
 script = ExtResource("1_aubd6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=664366046]
-position = Vector2(677, -15)
-scale = Vector2(0.2578125, 0.21875)
-texture = ExtResource("2_vcivv")
+texture_filter = 1
+position = Vector2(678, -14)
+scale = Vector2(0.13671878, 0.058593757)
+texture = ExtResource("2_aubd6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=56181972]
+visible = false
 position = Vector2(677, -15)
-shape = SubResource("RectangleShape2D_vkdpk")
+shape = SubResource("RectangleShape2D_272bh")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
