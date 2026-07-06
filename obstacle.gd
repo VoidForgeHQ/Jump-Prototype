@@ -10,6 +10,8 @@ func _physics_process(delta: float) -> void:
 	position.x -= speed * delta
 
 	var player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
 
 	print("Obstacle:", global_position.x)
 	print("Player:", player.global_position.x)
@@ -29,5 +31,7 @@ func _on_body_entered(body: Node2D) -> void:
 	# Check if the body that touched us is named "CharacterBody2D"
 	if body.name == "player":
 		print("GAME OVER")
-		await get_tree().create_timer(1.0).timeout
-		get_tree().reload_current_scene()
+		get_tree().paused = true
+		get_node("/root/Main/CanvasLayer2/DeathUI").visible = true
+		
+	
