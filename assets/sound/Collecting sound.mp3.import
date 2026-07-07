@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://u7n2vwu6aifj"
+path="res://.godot/imported/Collecting sound.mp3-8b3152926230f7977546b1349ec0c839.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/Collecting sound.mp3"
+dest_files=["res://.godot/imported/Collecting sound.mp3-8b3152926230f7977546b1349ec0c839.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
