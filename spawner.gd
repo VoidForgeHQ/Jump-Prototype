@@ -22,7 +22,7 @@ func _ready():
 	
 func _process(delta):
 	game_time += delta
-	$Timer.wait_time = max(0.7, 2.0 - game_time * 0.03)
+
 	if game_time >= 20 and current_wave == 1:
 		current_wave = 2
 		wave_label.text = "WAVE 2"
@@ -33,9 +33,57 @@ func _process(delta):
 		wave_label.text = "WAVE 3"
 		show_wave_popup("🔥 WAVE 3 🔥")
 
+	elif game_time >= 60 and current_wave == 3:
+		current_wave = 4
+		wave_label.text = "WAVE 4"
+		show_wave_popup("⚡ WAVE 4 ⚡")
+
+	elif game_time >= 80 and current_wave == 4:
+		current_wave = 5
+		wave_label.text = "WAVE 5"
+		show_wave_popup("💀 WAVE 5 💀")
+
 func _on_timer_timeout():
 	var obstacle = obstacle_scene.instantiate()
-	obstacle.position = Vector2(900, 0)
+
+	var random_y = randi_range(-20, 20)
+
+	match current_wave:
+
+		1:
+			obstacle.speed = 250
+			obstacle.position = Vector2(900, random_y)
+			obstacle.direction = -1
+
+		2:
+			obstacle.speed = 300
+			obstacle.position = Vector2(900, random_y)
+			obstacle.direction = -1
+
+		3:
+			obstacle.speed = 350
+
+			if randi() % 2 == 0:
+				obstacle.position = Vector2(900, random_y)
+				obstacle.direction = -1
+				obstacle.rotation_degrees = 0
+			else:
+				obstacle.position = Vector2(-200, random_y)
+				obstacle.direction = 1
+				obstacle.rotation_degrees = 180
+
+		4, 5:
+			obstacle.speed = 400 + (current_wave - 4) * 50
+
+			if randi() % 2 == 0:
+				obstacle.position = Vector2(900, random_y)
+				obstacle.direction = -1
+				obstacle.rotation_degrees = 0
+			else:
+				obstacle.position = Vector2(-200, random_y)
+				obstacle.direction = 1
+				obstacle.rotation_degrees = 180
+
 	get_parent().add_child(obstacle)
 	
 func show_wave_popup(text):

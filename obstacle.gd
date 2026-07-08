@@ -1,13 +1,14 @@
-extends Area2D # Or extends Area2D / CharacterBody2D
+extends Area2D
 
 
 var scored = false
+var direction  = -1
 
 @export var speed: float = 300.0
 
 func _physics_process(delta: float) -> void:
-	speed += 5 * delta
-	position.x -= speed * delta
+	
+	position.x += speed * direction * delta
 
 	var player = get_tree().get_first_node_in_group("player")
 	if player == null:
@@ -22,9 +23,7 @@ func _physics_process(delta: float) -> void:
 		scored = true
 		GameManager.add_score(1)
 
-	if position.x < -1000:
-		queue_free()
-	if position.x < -1000:
+	if position.x < -900 or position.x > 1200:
 		queue_free()
 	
 func _on_body_entered(body: Node2D) -> void:
