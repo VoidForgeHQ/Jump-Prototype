@@ -30,8 +30,10 @@ func _on_body_entered(body: Node2D) -> void:
 	# Check if the body that touched us is named "CharacterBody2D"
 	if body.name == "player":
 		print("GAME OVER")
+
+		GameManager.game_over = true
+		GameManager.update_death_ui()
 		get_node("/root/Main/DeathSound").play()
+		get_node("/root/Main/CanvasLayer2").visible = true
 		get_tree().paused = true
-		get_node("/root/Main/CanvasLayer2/DeathUI").visible = true
-		
 	

@@ -6,8 +6,18 @@ var score_label = null
 var game_over = false
 const SAVE_PATH = "user://save.dat"
 
+
+func update_death_ui():
+	var death_score = get_node("/root/Main/CanvasLayer2/DeathScore")
+	var death_high = get_node("/root/Main/CanvasLayer2/DeathHighScore")
+
+	death_score.text = str(score)
+	death_high.text = str(high_score)
+
+
 func _ready():
 	score = 0
+	game_over = false
 	load_high_score()
 	call_deferred("setup_ui")
 	
@@ -33,13 +43,11 @@ func load_high_score():
 func add_score(amount):
 	score += amount
 	get_node("/root/Main/ScoreSound").play()
-	
+
 	if score > high_score:
 		high_score = score
-		save_high_score(
-			
-		)
-	setup_ui()
+		save_high_score()
+
 	update_score_label()
 	
 	if is_instance_valid(score_label):

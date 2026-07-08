@@ -16,7 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://q6vlaoeysie0" path="res://assets/player/idel/player_idel4.png" id="7_yaehf"]
 [ext_resource type="Texture2D" uid="uid://d3op212o0jntj" path="res://assets/player/jump/player_jumpa1.png" id="8_82xsv"]
 [ext_resource type="Texture2D" uid="uid://6mjyt6jbry14" path="res://assets/player/jump/player_jumpa2.png" id="9_getpj"]
-[ext_resource type="Texture2D" uid="uid://bud38cq3mtf6v" path="res://assets/UI/arrow key1.png" id="10_074og"]
+[ext_resource type="Texture2D" uid="uid://cd2qfh55wx6w5" path="res://assets/UI/ControlButton1.png" id="10_getpj"]
+[ext_resource type="Texture2D" uid="uid://bfmld4o7kimfp" path="res://assets/UI/DeathUI.png" id="12_ryguw"]
+[ext_resource type="Texture2D" uid="uid://dedbflso5dkl5" path="res://assets/UI/onlyButton.png" id="13_d13ii"]
 [ext_resource type="Texture2D" uid="uid://b5dobpo24qoxp" path="res://assets/ground/1 Tiles/Tile_30.png" id="17_yaehf"]
 [ext_resource type="AudioStream" uid="uid://u7n2vwu6aifj" path="res://assets/sound/Collecting sound.mp3" id="19_getpj"]
 [ext_resource type="AudioStream" uid="uid://dmmsyx7bb2wug" path="res://assets/sound/Game over.mp3" id="20_ryguw"]
@@ -72,16 +74,13 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wp5od"]
-radius = 40.0
+radius = 190.47
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k56px"]
-radius = 40.0
+radius = 188.6
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkdpk"]
-radius = 40.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp5od"]
-bg_color = Color(0, 0, 0, 0.23921569)
+radius = 210.35
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k56px"]
 size = Vector2(2163, 182.125)
@@ -151,24 +150,27 @@ autoplay = "Idel"
 [node name="MobileControls" type="CanvasLayer" parent="." unique_id=1948648282]
 
 [node name="LeftButton" type="TouchScreenButton" parent="MobileControls" unique_id=1527392116]
-position = Vector2(64, 500)
-texture_normal = ExtResource("10_074og")
+position = Vector2(-2.0000005, 343)
+scale = Vector2(0.33600003, 0.34844446)
+texture_normal = ExtResource("10_getpj")
 shape = SubResource("CircleShape2D_wp5od")
 shape_visible = false
 action = "ui_left"
 
 [node name="RightButton" type="TouchScreenButton" parent="MobileControls" unique_id=1571683183]
-position = Vector2(212, 500)
+position = Vector2(329.05832, 591.7344)
 rotation = -3.127211
-texture_normal = ExtResource("10_074og")
+scale = Vector2(0.35387185, 0.35387185)
+texture_normal = ExtResource("10_getpj")
 shape = SubResource("CircleShape2D_k56px")
 shape_visible = false
 action = "ui_right"
 
 [node name="JumpButton" type="TouchScreenButton" parent="MobileControls" unique_id=570109213]
-position = Vector2(715, 500)
+position = Vector2(899.70544, 428.63693)
 rotation = 1.5866914
-texture_normal = ExtResource("10_074og")
+scale = Vector2(0.30033323, 0.2941742)
+texture_normal = ExtResource("10_getpj")
 shape = SubResource("CircleShape2D_vkdpk")
 shape_visible = false
 action = "ui_accept"
@@ -212,56 +214,68 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=841752167]
-
-[node name="DeathUI" type="Control" parent="CanvasLayer2" unique_id=570015818]
-process_mode = 2
 visible = false
-layout_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2" unique_id=308956099]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1104.0
+offset_top = -386.0
+offset_right = 336.0
+offset_bottom = 638.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_ryguw")
+
+[node name="DeathScore" type="Label" parent="CanvasLayer2" unique_id=1912595391]
+offset_left = 509.0
+offset_top = 149.00003
+offset_right = 620.4286
+offset_bottom = 191.85718
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 30
+
+[node name="DeathHighScore" type="Label" parent="CanvasLayer2" unique_id=500102136]
+offset_left = 640.0
+offset_top = 191.0
+offset_right = 734.2857
+offset_bottom = 233.0
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 30
+
+[node name="RestartButton1" type="TextureButton" parent="CanvasLayer2" unique_id=1668077940]
+offset_left = 435.0
+offset_top = 350.0
+offset_right = 666.0
+offset_bottom = 402.0
+texture_normal = ExtResource("13_d13ii")
+
+[node name="RestartButton" type="Button" parent="CanvasLayer2" unique_id=1674231132]
+process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -213.0
+offset_top = 12.0
+offset_right = 333.0
+offset_bottom = 130.57144
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer2/DeathUI" unique_id=478162851]
-layout_mode = 0
-offset_left = -264.0
-offset_top = -169.0
-offset_right = 308.0
-offset_bottom = 159.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wp5od")
-
-[node name="YOU DIED" type="Label" parent="CanvasLayer2/DeathUI" unique_id=583013773]
-layout_mode = 0
-offset_left = -59.0
-offset_top = -104.0
-offset_right = 106.0
-offset_bottom = -55.0
-theme_override_font_sizes/font_size = 35
-text = "YOU DIED"
-uppercase = true
-
-[node name="Restart" type="Button" parent="CanvasLayer2/DeathUI" unique_id=563863816]
-process_mode = 2
-layout_mode = 0
-offset_left = -11.0
-offset_top = -52.0
-offset_right = 52.0
-offset_bottom = -32.0
-theme_override_font_sizes/font_size = 8
-text = "Restart"
+scale = Vector2(0.7, 0.7)
+flat = true
 
 [node name="ObstacleSpawner" type="Node2D" parent="." unique_id=137233144]
 position = Vector2(800, -12)
 
 [node name="Ground" type="StaticBody2D" parent="." unique_id=555352608]
 position = Vector2(-12, 23)
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=519167885]
 visible = false
@@ -278,11 +292,15 @@ position = Vector2(-183, -7)
 texture = ExtResource("5_kek77")
 
 [node name="Tile02" type="Sprite2D" parent="Ground" unique_id=401914411]
-position = Vector2(23, -8)
+position = Vector2(541, 112)
 texture = ExtResource("6_4c57u")
 
 [node name="Tile03" type="Sprite2D" parent="Ground" unique_id=49510145]
 position = Vector2(55, -8)
+texture = ExtResource("6_4c57u")
+
+[node name="Tile449" type="Sprite2D" parent="Ground" unique_id=609337284]
+position = Vector2(28, -8)
 texture = ExtResource("6_4c57u")
 
 [node name="Tile04" type="Sprite2D" parent="Ground" unique_id=1698630143]
@@ -1126,7 +1144,7 @@ position = Vector2(521, 113)
 texture = ExtResource("7_4c57u")
 
 [node name="Tile214" type="Sprite2D" parent="Ground" unique_id=1343440488]
-position = Vector2(551, 113)
+position = Vector2(553, 115)
 texture = ExtResource("7_4c57u")
 
 [node name="Tile215" type="Sprite2D" parent="Ground" unique_id=1373869895]
@@ -2994,5 +3012,5 @@ stream = ExtResource("20_ryguw")
 [node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=1425037339]
 stream = ExtResource("21_d13ii")
 
-[connection signal="pressed" from="CanvasLayer2/DeathUI/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer2/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
