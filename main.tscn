@@ -17,8 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://d3op212o0jntj" path="res://assets/player/jump/player_jumpa1.png" id="8_82xsv"]
 [ext_resource type="Texture2D" uid="uid://6mjyt6jbry14" path="res://assets/player/jump/player_jumpa2.png" id="9_getpj"]
 [ext_resource type="Texture2D" uid="uid://cd2qfh55wx6w5" path="res://assets/UI/ControlButton1.png" id="10_getpj"]
-[ext_resource type="Texture2D" uid="uid://bfmld4o7kimfp" path="res://assets/UI/DeathUI.png" id="12_ryguw"]
-[ext_resource type="Texture2D" uid="uid://dedbflso5dkl5" path="res://assets/UI/onlyButton.png" id="13_d13ii"]
+[ext_resource type="Texture2D" uid="uid://b4mbp0wxdacuv" path="res://assets/UI/DeathUI1.png" id="12_d13ii"]
+[ext_resource type="Texture2D" uid="uid://bji6ly7jd53io" path="res://assets/UI/Group 1.png" id="13_1u8w0"]
 [ext_resource type="Texture2D" uid="uid://b5dobpo24qoxp" path="res://assets/ground/1 Tiles/Tile_30.png" id="17_yaehf"]
 [ext_resource type="AudioStream" uid="uid://u7n2vwu6aifj" path="res://assets/sound/Collecting sound.mp3" id="19_getpj"]
 [ext_resource type="AudioStream" uid="uid://dmmsyx7bb2wug" path="res://assets/sound/Game over.mp3" id="20_ryguw"]
@@ -229,30 +229,38 @@ offset_bottom = 638.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("12_ryguw")
+texture = ExtResource("12_d13ii")
 
 [node name="DeathScore" type="Label" parent="CanvasLayer2" unique_id=1912595391]
-offset_left = 509.0
-offset_top = 149.00003
-offset_right = 620.4286
-offset_bottom = 191.85718
+offset_left = 565.0
+offset_top = 145.00002
+offset_right = 683.8573
+offset_bottom = 190.71436
 scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 30
 
 [node name="DeathHighScore" type="Label" parent="CanvasLayer2" unique_id=500102136]
-offset_left = 640.0
-offset_top = 191.0
-offset_right = 734.2857
-offset_bottom = 233.0
+offset_left = 684.00006
+offset_top = 188.00002
+offset_right = 800.73474
+offset_bottom = 240.00002
 scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 30
 
 [node name="RestartButton1" type="TextureButton" parent="CanvasLayer2" unique_id=1668077940]
-offset_left = 435.0
-offset_top = 350.0
-offset_right = 666.0
-offset_bottom = 402.0
-texture_normal = ExtResource("13_d13ii")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = -40.0
+offset_right = 198.5
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("13_1u8w0")
+stretch_mode = 3
 
 [node name="RestartButton" type="Button" parent="CanvasLayer2" unique_id=1674231132]
 process_mode = 3
@@ -261,10 +269,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = 12.0
-offset_right = 333.0
-offset_bottom = 130.57144
+offset_left = -273.0
+offset_top = -59.28572
+offset_right = 273.0
+offset_bottom = 59.28572
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.7, 0.7)

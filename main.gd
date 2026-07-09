@@ -10,6 +10,10 @@ func _ready():
 	GameManager.score = 0
 	GameManager.setup_ui()
 	GameManager.game_over = false
+	if OS.get_name() == "Android":
+		$MobileControls.visible = true
+	else:
+		$MobileControls.visible = false
 	
 	
 func _on_restart_button_pressed() -> void:
